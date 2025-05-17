@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\RolesEnum;
+use App\Models\Room;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
             'role' => RolesEnum::CUSTOMER,
         ]);
+
+        Room::factory()->count(20)->create();
     }
 }
