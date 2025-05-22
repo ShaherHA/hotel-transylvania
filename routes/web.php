@@ -22,4 +22,6 @@ Route::middleware(['role:manager', 'auth'])->group(function () {
     Route::resource('/rooms', RoomController::class)->names('rooms');
 });
 
+Route::view('/reservation', 'reservations')->name('reservation');
+
 require __DIR__.'/auth.php';

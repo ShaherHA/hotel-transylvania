@@ -28,8 +28,8 @@ class RoomController extends Controller
             'room_number' => 'required',
             'base_price' => 'required|numeric|min:1',
             'capacity' => 'required|numeric|min:1|max:6',
-            'room_type' => 'required|in:single,double,suite,deluxe',
-            'status' => 'required|in:available,occupied,needs cleaning, out of service',
+            'room_type' => 'required|in:' . implode(',', RoomTypes::values()),
+            'status' => 'required|in:' . implode(',', RoomStatuses::values()),
         ]);
 
         Room::create($validated);
@@ -50,8 +50,8 @@ class RoomController extends Controller
             'room_number' => 'required',
             'base_price' => 'required|numeric|min:1',
             'capacity' => 'required|numeric|min:1|max:6',
-            'room_type' => 'required|in:single,double,suite,deluxe',
-            'status' => 'required|in:available,occupied,needs cleaning, out of service',
+            'room_type' => 'required|in:' . implode(',', RoomTypes::values()),
+            'status' => 'required|in:' . implode(',', RoomStatuses::values()),
         ]);
 
         $room->update($validated);
