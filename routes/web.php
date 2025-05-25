@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::middleware(['role:manager', 'auth'])->group(function () {
     Route::resource('/rooms', RoomController::class)->names('rooms');
 });
 
-Route::view('/reservation', 'reservations')->name('reservation');
+Route::middleware(['role:manager', 'auth'])->group(function () {
+    Route::resource('/reservations', ReservationController::class)->names('reservations');
+});
 
 require __DIR__.'/auth.php';

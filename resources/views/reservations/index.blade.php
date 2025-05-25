@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-2xl font-semibold mb-6">Room Reservations</h1>
@@ -10,21 +10,20 @@
                             <thead>
                             <tr class="bg-gray-100 text-gray-700 text-xs">
                                 <th class="py-2 px-4 border sticky left-0 bg-gray-100 z-10">Room</th>
-                                <th class="py-2 px-4 border">8:00</th>
-                                <th class="py-2 px-4 border">9:00</th>
-                                <th class="py-2 px-4 border">10:00</th>
-                                <th class="py-2 px-4 border">11:00</th>
-                                <th class="py-2 px-4 border">12:00</th>
-                                <th class="py-2 px-4 border">13:00</th>
-                                <th class="py-2 px-4 border">14:00</th>
-                                <th class="py-2 px-4 border">15:00</th>
-                                <th class="py-2 px-4 border">16:00</th>
-                                <th class="py-2 px-4 border">17:00</th>
-                                <th class="py-2 px-4 border">18:00</th>
-                                <th class="py-2 px-4 border">19:00</th>
-                                <th class="py-2 px-4 border">20:00</th>
-                                <th class="py-2 px-4 border">21:00</th>
-                                <th class="py-2 px-4 border">22:00</th>
+                                <th class="py-2 px-4 border">Mon</th>
+                                <th class="py-2 px-4 border">Tue</th>
+                                <th class="py-2 px-4 border">Wed</th>
+                                <th class="py-2 px-4 border">Thu</th>
+                                <th class="py-2 px-4 border">Fri</th>
+                                <th class="py-2 px-4 border">Sat</th>
+                                <th class="py-2 px-4 border">Sun</th>
+                                <th class="py-2 px-4 border">Mon</th>
+                                <th class="py-2 px-4 border">Tue</th>
+                                <th class="py-2 px-4 border">Wed</th>
+                                <th class="py-2 px-4 border">Thu</th>
+                                <th class="py-2 px-4 border">Fri</th>
+                                <th class="py-2 px-4 border">Sat</th>
+                                <th class="py-2 px-4 border">Sun</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,14 +31,14 @@
                             <tr>
                                 <td class="py-2 px-4 border font-medium sticky left-0 bg-white z-10">101</td>
                                 <td class="py-2 px-4 border"></td>
-                                <td class="py-2 px-4 border bg-blue-100" colspan="5">
+                                <td class="py-2 px-4 border bg-blue-100 rounded-full" colspan="5">
                                     <div class="text-xs">John Doe (9:00-12:00)</div>
                                 </td>
                                 <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
-                                <td class="py-2 px-4 border bg-green-100" colspan="4">
-                                    <div class="text-xs">Alice Smith (15:00-19:00)</div>
-                                </td>
+                                <td class="py-2 px-4 border"></td>
+                                <td class="py-2 px-4 border"></td>
+                                <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
@@ -100,7 +99,6 @@
                                 <td class="py-2 px-4 border bg-pink-100" colspan="8">
                                     <div class="text-xs">Michael Adams (8:00-16:00)</div>
                                 </td>
-                                <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
                                 <td class="py-2 px-4 border"></td>
