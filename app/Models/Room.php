@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @method static findOrFail(int $int)
+ */
 class Room extends Model
 {
     /** @use HasFactory<\Database\Factories\RoomFactory> */
