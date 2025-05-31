@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained('rooms');
             $table->date('start_date');
             $table->date('end_date');
+            $table->unique(['start_date', 'end_date', 'room_id']);
             $table->softDeletes();
             $table->timestamps();
         });

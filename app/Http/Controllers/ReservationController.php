@@ -25,9 +25,6 @@ class ReservationController extends Controller
 
         $rooms = Room::with('reservations')->get();
 
-        // for each room display the reservations in a date range
-        // date range is two weeks from current date OR user submitted date
-
-        return view('reservations.index', compact('dates', 'rooms'));
+        return view('reservations.index', compact('dates', 'rooms', 'date'));
     }
 }

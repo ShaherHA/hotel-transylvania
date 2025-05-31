@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\RolesEnum;
+use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,15 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create(['password' => 'password']);
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'manager@example.com',
             'password' => 'password',
-            'role' => RolesEnum::CUSTOMER,
+            'role' => RolesEnum::MANAGER,
         ]);
 
-        Room::factory()->count(20)->create();
+        Room::factory()->count(15)->create();
+
+        Reservation::factory()->count(15)->create();
     }
 }
