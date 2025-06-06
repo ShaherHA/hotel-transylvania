@@ -5,16 +5,17 @@
         New Room
     </a>
     </div>
-    <div class="shadow-lg rounded-lg overflow-hidden m-4 md:mx-10">
-        <table class="w-full table-fixed">
+    <div class="shadow-lg rounded-lg overflow-hidden m-4 md:mx-10 text-center">
+        <table class="w-full">
             <thead>
             <tr class="bg-gray-300">
-                <th class="w-1/6 py-4 px-6 text-left text-gray-600 font-bold uppercase">Room Number</th>
-                <th class="w-1/6 py-4 px-6 text-left text-gray-600 font-bold uppercase">Price</th>
-                <th class="w-1/6 py-4 px-6 text-left text-gray-600 font-bold uppercase">Capacity</th>
-                <th class="w-1/6 py-4 px-6 text-left text-gray-600 font-bold uppercase">Type</th>
-                <th class="w-1/6 py-4 px-6 text-center text-gray-600 font-bold uppercase">Status</th>
-                <th class="w-2/6 py-4 px-6 text-center text-gray-600 font-bold uppercase">Actions</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Picture</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Room Number</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Price</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Capacity</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Type</th>
+                <th class="w-1/6 py-4 px-6 text-gray-600 font-bold uppercase">Status</th>
+                <th class="w-2/6 py-4 px-6 text-gray-600 font-bold uppercase">Actions</th>
             </tr>
             </thead>
             <tbody class="bg-white">

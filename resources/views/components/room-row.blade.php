@@ -1,4 +1,5 @@
 <tr class="hover:bg-gray-50">
+    <td class="px-2 py-2 border-b border-gray-200"><img src="/storage/{{ $room->picture_path }}" alt="room-picture"> </td>
     <td class="py-4 px-6 border-b border-gray-200">{{ $room->room_number }}</td>
     <td class="py-4 px-6 border-b border-gray-200 truncate">{{ $room->base_price }}</td>
     <td class="py-4 px-6 border-b border-gray-200 truncate">{{ $room->capacity }}</td>

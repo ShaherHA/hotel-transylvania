@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Enums\RoomTypes;
 use App\Enums\RoomStatuses;
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -30,10 +31,18 @@ class RoomController extends Controller
             'capacity' => 'required|numeric|min:1|max:6',
             'room_type' => 'required|in:' . implode(',', RoomTypes::values()),
             'status' => 'required|in:' . implode(',', RoomStatuses::values()),
+            'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        if ($request->hasFile('picture')) {
+            $picturePath = $request->file('picture')->store('room_pictures', 'public');
+            $validated['picture_path'] = $picturePath;
+        }
+
+        // Remove 'picture' from validated data since we're storing 'picture_path'
+        unset($validated['picture']);
         Room::create($validated);
-        return redirect()->route('rooms.index')->with('success', 'Room created!');
+        return redirect()->route('rooms.index')->with('success', 'Room created successfully!');
     }
 
     public function edit(Room $room) {
@@ -52,11 +61,26 @@ class RoomController extends Controller
             'capacity' => 'required|numeric|min:1|max:6',
             'room_type' => 'required|in:' . implode(',', RoomTypes::values()),
             'status' => 'required|in:' . implode(',', RoomStatuses::values()),
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Optional for updates
         ]);
 
-        $room->update($validated);
+        // Handle file upload for updates
+        if ($request->hasFile('picture')) {
+            // Delete old picture if it exists
+            if ($room->picture_path && Storage::disk('public')->exists($room->picture_path)) {
+                Storage::disk('public')->delete($room->picture_path);
+            }
 
-        return redirect()->route('rooms.index')->with('status', 'Room updated!');
+            // Store new picture
+            $picturePath = $request->file('picture')->store('room_pictures', 'public');
+            $validated['picture_path'] = $picturePath;
+        }
+
+        // Remove 'picture' from validated data
+        unset($validated['picture']);
+
+        $room->update($validated);
+        return redirect()->route('rooms.index')->with('success', 'Room updated successfully!');
     }
 
     public function destroy(Room $room) {
