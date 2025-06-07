@@ -93,12 +93,12 @@
                                         @if ($hasReservation)
                                             <td class="py-2 px-4 border {{ $colors[array_rand($colors)] }} rounded-full" colspan="{{ $colspan }}">
                                                 <div class="flex justify-between items-center relative">
-                                                    <p class="text-s text-white">{{ $res->user->name }}</p>
+                                                    <p class="text-s text-white">{{ $reservation->user->name }}</p>
                                                     <button class="bg-black text-white rounded-md p-2 hover:bg-gray-600 transition duration-200">Edit</button>
 
                                                     <!-- Form Container -->
                                                     <div class="absolute border rounded-xl left-3/4 top-10 mt-2 bg-gray-400 z-10 hidden form-container p-2">
-                                                        <form class="flex justify-end" method="POST" action="/reservations/{{ $res->id }}">
+                                                        <form class="flex justify-end" method="POST" action="/reservations/{{ $reservation->id }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="bg-red-500 hover:bg-red-600 text-white text-xs font-semibold py-2 px-4 rounded-lg shadow-sm transition duration-200">
