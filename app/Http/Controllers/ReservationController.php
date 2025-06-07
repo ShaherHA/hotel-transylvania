@@ -44,7 +44,6 @@ class ReservationController extends Controller
         if ($overlapping) {
             return redirect()->back()->withErrors('Reservation overlap');
         }
-        dump($overlapping);
 
         $reservation->update($validated);
 
