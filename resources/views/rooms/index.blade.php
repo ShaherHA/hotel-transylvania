@@ -1,10 +1,13 @@
 <x-app-layout>
-    <div class="m-4 flex justify-between items-center">
-    <h1 class="text-4xl font-extrabold">Rooms</h1>
-    <a href="{{ route('rooms.create') }}" id="new-room-btn" class="bg-green-500 hover:bg-green-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-sm mr-2 transition duration-200">
-        New Room
-    </a>
-    </div>
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+            <h1 class="font-semibold text-4xl text-gray-800 leading-tight">Rooms</h1>
+            <a href="{{ route('rooms.create') }}" id="new-room-btn" class="bg-green-500 hover:bg-green-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-sm mr-2 transition duration-200">
+                New Room
+            </a>
+        </div>
+    </x-slot>
+
     <div class="shadow-lg rounded-lg overflow-hidden m-4 md:mx-10 text-center">
         <table class="w-full">
             <thead>
