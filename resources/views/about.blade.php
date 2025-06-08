@@ -1,24 +1,9 @@
 <x-app-layout>
-    <!-- Hero Section -->
-    <div class="bg-white w-full h-full">
-        <div class="bg-white py-4">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                        Welcome to Hotel Transylvania
-                    </h1>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Experience luxury and comfort in the heart of one of Europe's most enchanting regions.
-                        Where modern elegance meets timeless hospitality.
-                    </p>
-                </div>
-            </div>
-        </div>
 
         <!-- Main Content -->
         <div class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-10">
                     <div>
                         <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
                         <p class="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -41,7 +26,7 @@
                 </div>
 
                 <!-- Features Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
                     <div class="text-center p-8 bg-blue-50 rounded-lg">
                         <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,6 +133,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
+<x-footer></x-footer>
 </x-app-layout>

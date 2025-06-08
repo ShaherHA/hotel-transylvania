@@ -29,6 +29,7 @@ class RoomFactory extends Factory
             'status' => $this->faker->randomElement(RoomStatuses::cases())->value,
             'capacity' => $this->faker->numberBetween(1, 6),
             'base_price' => $this->faker->numberBetween(10, 1000),
+            'size'  => $this->faker->numberBetween(5, 30),
         ];
     }
 }

@@ -1,14 +1,22 @@
 <?php
 
+use App\Enums\RoomTypes;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
+use App\Models\Room;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
+
+Route::get('/', function () {
+    $rooms = Room::all();
+    $roomTypes = RoomTypes::cases();
+
+    return view('home', compact('rooms', 'roomTypes'));
+})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
