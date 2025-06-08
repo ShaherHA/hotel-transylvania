@@ -1,17 +1,14 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/', 'home')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/contact', 'contact')->name('contact');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -19,12 +16,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['role:manager', 'auth'])->group(function () {
+Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::resource('/rooms', RoomController::class)->names('rooms');
-});
-
-Route::middleware(['role:manager', 'auth'])->group(function () {
     Route::resource('/reservations', ReservationController::class)->names('reservations');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
-
 require __DIR__.'/auth.php';
