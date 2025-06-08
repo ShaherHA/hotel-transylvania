@@ -41,15 +41,19 @@ class ReservationController extends Controller
             'end_date' => 'required|date|after:start_date',
         ]);
 
-        $overlapping = $this->checkOverlap($reservation->room_id ,$validated['start_date'], $validated['end_date']);
+        // Check for overlapping reservations, passing room_id and reservation id
+        $overlapping = $this->checkOverlap($reservation->room_id, $validated['start_date'], $validated['end_date'], $reservation->id);
+
         if ($overlapping) {
-            return redirect()->back()->withErrors('Reservation overlap');
+            return redirect()->back()->withErrors('Reservation overlaps with another reservation. Did not update.');
         }
 
+        // Update the reservation
         $reservation->update($validated);
 
         return redirect()->back()->with('success', 'Reservation updated successfully.');
     }
+
 
     public function destroy(Reservation $reservation)
     {
@@ -58,8 +62,8 @@ class ReservationController extends Controller
         return redirect()->back()->with('success', 'Reservation deleted successfully.');
     }
 
-    public function checkOverlap($roomId, $start_date, $end_date) {
-        return Reservation::where('room_id', $roomId)
+    public function checkOverlap($roomId, $start_date, $end_date, $reservationId = null) {
+        $query = Reservation::where('room_id', $roomId)
             ->where(function ($query) use ($start_date, $end_date) {
                 $query->whereBetween('start_date', [$start_date, $end_date])
                     ->orWhereBetween('end_date', [$start_date, $end_date])
@@ -67,7 +71,14 @@ class ReservationController extends Controller
                         $query->where('start_date', '<=', $start_date)
                             ->where('end_date', '>=', $end_date);
                     });
-            })
-            ->exists();
+            });
+
+        // Exclude the current reservation if an ID is provided
+        if ($reservationId) {
+            $query->where('id', '!=', $reservationId);
+        }
+
+        return $query->exists();
     }
+
 }

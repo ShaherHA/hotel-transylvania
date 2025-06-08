@@ -16,17 +16,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create(['password' => 'password']);
+        User::factory(15)->create([
+            'password' => 'password',
+            'role' => RolesEnum::CUSTOMER
+        ]);
 
         User::factory()->create([
-            'name' => 'Test User',
             'email' => 'manager@example.com',
             'password' => 'password',
             'role' => RolesEnum::MANAGER,
         ]);
 
         Room::factory()->count(15)->create();
-
-        Reservation::factory()->count(15)->create();
+        $rooms = Room::all();
+        foreach ($rooms as $room) {
+        Reservation::factory()->create([
+            'room_id' => $room->id
+        ]);
+        }
     }
 }
