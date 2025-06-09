@@ -24,6 +24,18 @@
                                 <h4 class="font-semibold">Total Customers</h4>
                                 <p class="text-2xl">{{ $customersAmount }}</p>
                             </div>
+                            <div class="bg-red-100 p-4 rounded-lg shadow">
+                                <h4 class="font-semibold">Rooms Out Of Service</h4>
+                                <p class="text-2xl">{{ $amountOutOfService }}</p>
+                            </div>
+                            <div class="bg-yellow-100 p-4 rounded-lg shadow">
+                                <h4 class="font-semibold">Rooms Need Cleaning</h4>
+                                <p class="text-2xl">{{ $amountCleaning }}</p>
+                            </div>
+                            <div class="bg-green-100 p-4 rounded-lg shadow">
+                                <h4 class="font-semibold">Available rooms</h4>
+                                <p class="text-2xl">{{ $amountAvailable }}</p>
+                            </div>
                             <div class="bg-purple-100 p-4 rounded-lg shadow col-span-1 md:col-span-3">
                                 <h4 class="font-semibold">Last Quarter Turnover</h4>
                                 <p class="text-2xl">${{ number_format($lastQuarterTurnOver, 2, ',', '.') }}</p>
