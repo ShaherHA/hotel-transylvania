@@ -1,4 +1,6 @@
 <x-app-layout>
+    @vite('resources/js/home.js')
+
     <!-- Hero Section -->
     <div class="relative h-screen text-white overflow-hidden">
         <div class="absolute inset-0">
@@ -23,11 +25,11 @@
 
             <!-- Room Type Filters -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="room-filter active bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors" data-type="all">
+                <button class="room-filter active border border-gray-300 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-colors" data-type="all">
                     All Rooms
                 </button>
                 @foreach($roomTypes as $type)
-                    <button class="room-filter bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors" data-type="{{ $type->value }}">
+                    <button class="room-filter bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-colors" data-type="{{ $type->value }}">
                         {{ $type->name }}
                     </button>
                 @endforeach
@@ -163,61 +165,4 @@
     </section>
 
     <x-footer></x-footer>
-
-    <style>
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
-
-    <script>
-        // Room type filtering
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.room-filter');
-            const roomCards = document.querySelectorAll('.room-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const filterType = this.getAttribute('data-type');
-
-                    // Update active button
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'bg-blue-500', 'text-white');
-                        btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
-                    });
-
-                    this.classList.add('active', 'bg-blue-500', 'text-white');
-                    this.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
-
-                    // Filter rooms
-                    roomCards.forEach(card => {
-                        if (filterType === 'all' || card.getAttribute('data-type') === filterType) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-
-            // Smooth scroll for "Explore Rooms" button
-            document.querySelector('a[href="#rooms"]').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('#rooms').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </x-app-layout>

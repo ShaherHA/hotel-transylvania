@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\RolesEnum;
 use App\Models\Room;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -30,7 +31,10 @@ class ReservationFactory extends Factory
             'role', '=', RolesEnum::CUSTOMER
         )->max('id');
 
-        $startDate = $this->faker->dateTimeBetween('2025-05-30', '2025-06-06');
+        $startRange = Carbon::now()->toDateString();
+        $endRange = Carbon::now()->addDays(14)->toDateString();
+
+        $startDate = $this->faker->dateTimeBetween($startRange, $endRange);
         $duration = $this->faker->numberBetween(2, 5);
         $endDate = (clone $startDate)->modify("+{$duration} days");
         return [

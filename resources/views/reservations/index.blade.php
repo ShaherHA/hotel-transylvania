@@ -22,6 +22,7 @@
     ];
 @endphp
 <x-app-layout>
+    @vite('resources/js/open-res-edit-form.js')
     @if(session('success'))
         <div class="bg-green-500 text-white p-2 rounded-md mb-4">
             {{ session('success') }}
