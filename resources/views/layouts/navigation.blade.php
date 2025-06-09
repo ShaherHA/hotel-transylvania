@@ -62,6 +62,14 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            @auth
+                                @if(auth()->user()->role == \App\Enums\RolesEnum::CUSTOMER->value)
+                                    <x-dropdown-link :href="route('reservations.my')">
+                                        {{ __('My Reservations') }}
+                                    </x-dropdown-link>
+                                @endif
+                            @endauth
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -142,6 +150,14 @@
                     <x-responsive-nav-link :href="route('profile.edit')">
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
+
+                    @auth
+                        @if(auth()->user()->role == \App\Enums\RolesEnum::CUSTOMER->value)
+                        <x-responsive-nav-link :href="route('reservations.my')">
+                            {{ __('My Reservations') }}
+                        </x-responsive-nav-link>
+                        @endif
+                    @endauth
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">

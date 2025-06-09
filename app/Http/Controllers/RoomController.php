@@ -83,9 +83,15 @@ class RoomController extends Controller
         return redirect()->route('rooms.index')->with('success', 'Room updated successfully!');
     }
 
+    public function show(Room $room) {
+        return view('rooms.show', compact('room'));
+    }
+
     public function destroy(Room $room) {
         $room->delete();
 
         return redirect()->route('rooms.index')->with('status', 'Room deleted!');
     }
+
+
 }

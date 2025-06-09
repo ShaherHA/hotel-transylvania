@@ -8,6 +8,7 @@ use App\Models\Room;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -79,6 +80,46 @@ class ReservationController extends Controller
         }
 
         return $query->exists();
+    }
+
+    public function create(Request $request) {
+        $room = Room::findOrFail($request->input('room_id'));
+
+        return view('reservations.create', compact('room'));
+    }
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'room_id' => 'required|int|exists:rooms,id',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+        ]);
+
+        $validated['user_id'] = Auth::id();
+
+        if ($this->checkOverlap($validated['room_id'], $validated['start_date'], $validated['end_date'])) {
+            return redirect()->back()->withErrors('Reservation overlaps with another reservation. Did not reserve.');
+        }
+
+        Reservation::create($validated);
+
+        return redirect()->back()->with('success', 'Reserved successfully.');
+    }
+
+    public function myReservations() {
+
+        $currentDate = CarbonImmutable::now()->toDateString();
+        // Get upcoming reservations for the authenticated user
+        $upcoming = Reservation::with('room')
+            ->where([['start_date', '>=', $currentDate], ['user_id', '=', Auth::id()]])
+            ->get();
+
+        // Get past reservations for the authenticated user
+        $past = Reservation::with('room')
+            ->where([['end_date', '<', $currentDate], ['user_id', '=', Auth::id()]])
+            ->get();
+
+
+        return view('reservations.my', compact('upcoming', 'past'));
     }
 
 }

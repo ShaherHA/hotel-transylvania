@@ -29,4 +29,13 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::resource('/reservations', ReservationController::class)->names('reservations');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
+Route::get('/rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
+
+
+
+Route::middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/my-reservations', [ReservationController::class, 'myReservations'])->name('reservations.my');
+});
 require __DIR__.'/auth.php';
