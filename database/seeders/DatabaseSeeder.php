@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\RolesEnum;
+use App\Enums\RoomTypes;
 use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\User;
@@ -27,7 +28,16 @@ class DatabaseSeeder extends Seeder
             'role' => RolesEnum::MANAGER,
         ]);
 
-        Room::factory()->count(15)->create();
+        foreach (RoomTypes::cases() as $roomType) {
+            for ($i = 0; $i < 4; $i++) {
+                Room::factory()->create([
+                    'room_type' =>  $roomType,
+                    'picture_path' => 'room_pictures/' . $roomType->value . '-room-' . $i + 1 . '.jpg'
+                ]);
+            }
+        }
+
+
         $rooms = Room::all();
         foreach ($rooms as $room) {
         Reservation::factory()->create([
