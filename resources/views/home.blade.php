@@ -133,9 +133,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                        <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><polygon class="cls-1" points="22.5 22.5 1.5 22.5 1.5 20.59 2.46 18.68 21.55 18.68 22.5 20.59 22.5 22.5"/><path class="cls-1" d="M11.75,5.32h.49a9.3,9.3,0,0,1,9.3,9.3v.25a0,0,0,0,1,0,0H2.45a0,0,0,0,1,0,0v-.25A9.3,9.3,0,0,1,11.75,5.32Z"/><line class="cls-1" x1="12" y1="1.5" x2="12" y2="5.32"/><line class="cls-1" x1="9.14" y1="1.5" x2="14.86" y2="1.5"/><rect class="cls-1" x="5.32" y="14.86" width="13.36" height="3.82"/></svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Premium Service</h3>
                     <p class="text-gray-600">24/7 concierge service and personalized attention to every guest.</p>
