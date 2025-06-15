@@ -43,10 +43,8 @@
                             </div>
                             <div class="flex space-x-2">
                                 <button class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                                    View Details
-                                </button>
-                                <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                                     <i class="fas fa-edit"></i>
+                                    Edit reservation
                                 </button>
                             </div>
                         </div>

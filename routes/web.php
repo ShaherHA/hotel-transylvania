@@ -14,7 +14,7 @@ Route::view('/contact', 'contact')->name('contact');
 
 Route::get('/', function () {
 
-    if (auth()->user()->role == RolesEnum::MANAGER->value) {
+    if (auth()->user() && auth()->user()->role == RolesEnum::MANAGER->value) {
         return redirect(route('dashboard'));
     }
 
