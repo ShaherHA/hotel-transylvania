@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-message-lint></x-message-lint>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -42,10 +43,10 @@
                                 </div>
                             </div>
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                                    <i class="fas fa-edit"></i>
+                                <a href="{{ route('reservations.edit', ['reservation' => $reservation->id,'room_id' => $reservation->room->id]) }}" class="flex justify-center items-center text-xl flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                                    <i class="fas fa-edit mr-1"></i>
                                     Edit reservation
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
                             </div>
                             <h3 class="text-lg font-medium text-gray-900 mb-2">No upcoming reservations</h3>
                             <p class="text-gray-500 mb-4">You don't have any upcoming hotel stays at the moment.</p>
-                            <a href="{{ route('home') }}" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                            <a href="{{ route('home') }}#rooms" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                                 Make a Reservation
                             </a>
                         </div>
@@ -106,11 +107,9 @@
                                 </div>
                             </div>
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                                    View Receipt
-                                </button>
-                                <button class="px-4 py-2 border border-blue-300 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors">
-                                    <i class="fas fa-star"></i>
+                                <button class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-xl font-medium hover:bg-gray-200 transition-colors">
+                                    <i class="fas fa-star mr-1"></i>
+                                    Add a review
                                 </button>
                             </div>
                         </div>

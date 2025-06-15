@@ -43,5 +43,8 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/my-reservations', [ReservationController::class, 'myReservations'])->name('reservations.my');
+    route::get('reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+    route::patch('reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+    route::delete('reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 });
 require __DIR__.'/auth.php';

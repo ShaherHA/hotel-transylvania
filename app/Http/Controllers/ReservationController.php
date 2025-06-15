@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Models\Room;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,11 @@ class ReservationController extends Controller
     }
 
 
+    public function edit(Request $request, Reservation $reservation) {
+        $room = Room::findOrFail($request->input('room_id'));
+
+        return view('reservations.edit', compact('room', 'reservation'));
+    }
 
     // Method to update a reservation
     public function update(Request $request, Reservation $reservation)
@@ -56,9 +62,13 @@ class ReservationController extends Controller
     }
 
 
-    public function destroy(Reservation $reservation)
+    public function destroy(Request $request, Reservation $reservation)
     {
         $reservation->delete();
+
+        if ($request->getRequestUri() === '/reservations/' . $reservation->id) {
+            return redirect(route('reservations.my'))->with('success', 'Reservation deleted successfully.');
+        }
 
         return redirect()->back()->with('success', 'Reservation deleted successfully.');
     }
