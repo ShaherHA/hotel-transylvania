@@ -1,6 +1,5 @@
 <x-app-layout>
-    @vite('resources/js/home.js')
-
+    <script defer src="resources/js/home.js"></script>
     <!-- Hero Section -->
     <div class="relative h-screen text-white overflow-hidden">
         <div class="absolute inset-0">

@@ -22,7 +22,7 @@
     ];
 @endphp
 <x-app-layout>
-    @vite('resources/js/open-res-edit-form.js')
+    <script defer src="resources/js/open-res-edit-form.js"></script>
     <x-message-lint></x-message-lint>
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
