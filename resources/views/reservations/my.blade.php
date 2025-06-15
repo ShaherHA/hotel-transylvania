@@ -107,10 +107,10 @@
                                 </div>
                             </div>
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-xl font-medium hover:bg-gray-200 transition-colors">
+                                <a href="{{ route('reviews.create', ['room_id' => $pastReservation->room->id]) }}" class="flex justify-center items-center flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-xl font-medium hover:bg-gray-200 transition-colors">
                                     <i class="fas fa-star mr-1"></i>
                                     Add a review
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
