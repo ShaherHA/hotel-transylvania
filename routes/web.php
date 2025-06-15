@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\RolesEnum;
 use App\Enums\RoomTypes;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -12,6 +13,11 @@ Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 
 Route::get('/', function () {
+
+    if (auth()->user()->role == RolesEnum::MANAGER->value) {
+        return redirect(route('dashboard'));
+    }
+
     $rooms = Room::all();
     $roomTypes = RoomTypes::cases();
 
