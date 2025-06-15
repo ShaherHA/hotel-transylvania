@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,7 +85,10 @@ class RoomController extends Controller
     }
 
     public function show(Room $room) {
-        return view('rooms.show', compact('room'));
+        $reviews = $room->reviews()->with('user')->get();
+        $roomRating = Review::where(['room_id' => $room->id])->avg('rating');
+
+        return view('rooms.show', compact('room', 'reviews', 'roomRating'));
     }
 
     public function destroy(Room $room) {

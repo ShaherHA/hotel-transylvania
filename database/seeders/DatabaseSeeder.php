@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\RolesEnum;
 use App\Enums\RoomTypes;
 use App\Models\Reservation;
+use App\Models\Review;
 use App\Models\Room;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,12 +31,22 @@ class DatabaseSeeder extends Seeder
 
         foreach (RoomTypes::cases() as $roomType) {
             for ($i = 0; $i < 4; $i++) {
-                Room::factory()->create([
-                    'room_type' =>  $roomType,
-                    'picture_path' => 'room_pictures/' . $roomType->value . '-room-' . $i + 1 . '.jpg'
+                // Create the room
+                $room = Room::factory()->create([
+                    'room_type' => $roomType,
+                    'picture_path' => 'room_pictures/' . $roomType->value . '-room-' . ($i + 1) . '.jpg'
                 ]);
+
+                // Create 5 reviews, each with a different user
+                for ($j = 0; $j < 5; $j++) {
+                    Review::factory()->create([
+                        'room_id' => $room->id,
+                        'user_id' => User::factory()->create()->id // Create a new user for each review
+                    ]);
+                }
             }
         }
+
 
 
         $rooms = Room::all();
