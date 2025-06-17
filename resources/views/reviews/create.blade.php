@@ -1,5 +1,5 @@
 <x-app-layout>
-    <script defer src="resources/js/stars-review.js"></script>
+    @vite('resources/js/stars-review.js')
     <x-message-lint></x-message-lint>
     <div class="flex justify-center p-6">
         <form method="POST" action="/reviews" class="space-y-6 bg-white p-6 rounded-xl">
