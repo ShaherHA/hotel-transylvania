@@ -33,7 +33,7 @@
                                 <p class="text-2xl">{{ $amountCleaning }}</p>
                             </div>
                             <div class="bg-green-100 p-4 rounded-lg shadow">
-                                <h4 class="font-semibold">Available rooms</h4>
+                                <h4 class="font-semibold">Available Rooms</h4>
                                 <p class="text-2xl">{{ $amountAvailable }}</p>
                             </div>
                             <div class="bg-purple-100 p-4 rounded-lg shadow col-span-1 md:col-span-3">
